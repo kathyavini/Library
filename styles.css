@@ -1,0 +1,258 @@
+* {
+    /* border: 1px salmon solid; */
+    box-sizing: border-box;
+    font-family: "Noto Sans", "Open Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+}
+
+.container {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-rows: 3fr 1fr 3fr;
+    grid-template-columns: 3fr 1fr 3fr;
+    color: #343a40;
+}
+
+
+main {
+    grid-area: 2 / 2;
+    height: 80vh;
+    width: 80vh;
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(5, 1fr);
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+
+.background {
+    /* row start, column start... */
+    grid-area: 1 / 1 / 4 / 4;
+}
+
+.table {
+    grid-area: 4 / 1 / 6 / 4;
+}
+
+.table img {
+    width: 100%;
+    height: auto;
+}
+
+/* Would love to know a better way to do this */
+.books {
+    grid-area: 3 / 1 / 4 / 4;
+    display: grid;
+    gap: 2px;
+    grid-template-columns: 1fr 1fr repeat(5, 2fr) 1fr 1fr 3fr; 
+    grid-template-rows: repeat(5, 1fr);
+}
+
+.book {
+    height: 100%;
+    width: 100%;
+    visibility: hidden;
+}
+
+.book img:hover {
+    filter: brightness(1.5); 
+}
+
+.book img:active {
+    filter: brightness(2); 
+}
+
+.bk3 {
+    visibility: visible;
+}
+
+/* Yikes so much transform */
+.bk1,
+.bk2,
+.bk5,
+.bk6,
+.bk7 {
+    grid-row: 1 / 6;
+    transform: translateY(12px);
+}
+
+.bk2 {
+    grid-column: 2;
+    transform: translateY(14px);
+}
+
+.bk3 {
+    grid-row: 5 / 6;
+    grid-column: 3 / 7;
+    /* Otherwise bk4 will always be selected */
+    z-index: 2;
+}
+
+.bk4 {
+    grid-row: 4 / 6;
+    grid-column: 3 / 7;
+    transform: translateX(15px);
+}
+
+.bk4.bottom {
+    transform: translateY(20px);
+    z-index: 3;
+}
+
+.bk5 {
+    grid-column: 7; 
+}
+
+.bk5 {
+    grid-column: 8; 
+}
+
+.bk6 {
+    grid-column: 9;
+    transform: translateY(19px);
+}
+
+.bk7 {
+    grid-column: 10;
+    transform: translateY(25px); 
+}
+
+.plant {
+    grid-area: 4 / 4 / 6 / 6;
+}
+
+.plant:hover {
+    filter: brightness(1.1); 
+}
+
+.plant:active {
+    filter: brightness(1.5);
+}
+
+.add-book {
+    grid-area: 1 / 1;
+}
+
+.add-book img {
+    height: 50%;
+    width: auto;
+    opacity: .8;
+}
+
+.add-book img:hover {
+    opacity: 1;
+}
+
+.book-card {
+    background-color: #e1e6fb;
+    width: 130%;
+    transform: translateX(50px);
+    height: max-content;
+    grid-area: 1 / 4 / 3 / 6;
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 20px;
+    gap: 10px;
+    justify-content: space-between;
+    border-radius: 2px;
+    line-height: 2rem;
+    visibility: hidden;
+}
+
+.book-card>p>img {
+    padding-left: 5px;
+    width: 15%;
+    vertical-align: middle;
+    opacity: .8;
+    visibility: hidden;
+}
+
+
+.book-options {
+    align-self: flex-end;
+    justify-self: flex-end;
+    display: flex;
+    gap: 5px;
+}
+
+.book-options img {
+    opacity: .7;
+}
+
+.book-options img:hover {
+    opacity: 1;
+}
+
+.add-form {
+    grid-area: 1 / 2 / 5 / 5;
+    background-color: #343a40;
+    z-index: 4;
+    color: white;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    padding: 30px 30px 30px 30px;
+    visibility: hidden;
+}
+
+.add-form input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid white;
+    color:white;
+    margin-top: 20px;
+    font-size: 1.2rem;
+}
+
+#title,
+#author{
+    width: 100%;
+}
+
+#year {
+    width: 40%;
+}
+
+#read,
+#year {
+    margin-left: 10px;
+}
+
+.add-form button {
+    text-transform: uppercase;
+    width: 50%;
+    margin-left: auto;
+    background: #343a40;
+    color: white;
+    border: 2px white solid;
+    border-radius: 2px;
+    padding: 10px;
+}
+
+.add-form button:hover {
+    filter: brightness(1.5); 
+}
+
+.add-form button:active {
+    filter: brightness(2);
+}
+
+.full-warning {
+    text-transform: uppercase;
+    grid-area: 2 / 1 / 3 / 5;
+    align-self: center;
+    justify-self: end;
+    font-size: 1.8rem;
+    visibility: hidden;
+}

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   id="Books"
+   viewBox="0 0 383.18 50.430001"
+   version="1.1"
+   sodipodi:docname="book-3.svg"
+   inkscape:version="1.1.1 (c3084ef, 2021-09-22)"
+   width="383.17999"
+   height="50.43"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <sodipodi:namedview
+     id="namedview83"
+     pagecolor="#ffffff"
+     bordercolor="#999999"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="1.3919079"
+     inkscape:cx="427.83003"
+     inkscape:cy="-35.562698"
+     inkscape:window-width="1296"
+     inkscape:window-height="855"
+     inkscape:window-x="0"
+     inkscape:window-y="23"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="Books"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <defs
+     id="defs19">
+    <style
+       id="style2">.cls-1{fill:#f4f4f4;}.cls-2{fill:#4b46bd;}.cls-3{fill:url(#linear-gradient);}.cls-4{fill:url(#linear-gradient-2);}.cls-5{fill:#5accec;}.cls-6{fill:#f2f2f2;}.cls-7{fill:#f8246a;}.cls-8{fill:url(#linear-gradient-3);}.cls-9{fill:url(#linear-gradient-4);}.cls-10{fill:url(#linear-gradient-5);}.cls-11{fill:url(#linear-gradient-6);}.cls-12{fill:url(#linear-gradient-7);}</style>
+    <linearGradient
+       id="linear-gradient"
+       x1="893"
+       y1="636.5"
+       x2="1268"
+       y2="636.5"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#4b46bd"
+         id="stop4" />
+      <stop
+         offset="1"
+         stop-color="#5cd4ee"
+         id="stop6" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient-2"
+       x1="906.28003"
+       y1="682.21002"
+       x2="1289.46"
+       y2="682.21002"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#f71f68"
+         id="stop9" />
+      <stop
+         offset="1"
+         stop-color="#f9c448"
+         id="stop11" />
+    </linearGradient>
+    <linearGradient
+       id="linear-gradient-3"
+       x1="516.16998"
+       y1="254.44"
+       x2="725.28003"
+       y2="-6.4699998"
+       xlink:href="#linear-gradient" />
+    <linearGradient
+       id="linear-gradient-4"
+       x1="-52.830002"
+       y1="252.44"
+       x2="156.28"
+       y2="-8.4700003"
+       xlink:href="#linear-gradient" />
+    <linearGradient
+       id="linear-gradient-5"
+       x1="1383.88"
+       y1="695.65997"
+       x2="1579.74"
+       y2="451.28"
+       gradientTransform="matrix(0.91,0,0,0.74,160.47,168.83)"
+       xlink:href="#linear-gradient" />
+    <linearGradient
+       id="linear-gradient-6"
+       x1="577.06"
+       y1="263.67999"
+       x2="758.91998"
+       y2="36.77"
+       xlink:href="#linear-gradient-2" />
+    <linearGradient
+       id="linear-gradient-7"
+       x1="1.39"
+       y1="254.75"
+       x2="203.69"
+       y2="2.3399999"
+       xlink:href="#linear-gradient-2" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linear-gradient-2"
+       id="linearGradient119"
+       gradientUnits="userSpaceOnUse"
+       x1="906.28003"
+       y1="682.21002"
+       x2="1289.46"
+       y2="682.21002" />
+  </defs>
+  <title
+     id="title21">Books</title>
+  <g
+     id="Files"
+     transform="translate(-160.25,-254)">
+    <rect
+       class="cls-1"
+       x="399"
+       y="269"
+       width="141"
+       height="5"
+       rx="2.5"
+       ry="2.5"
+       id="rect29" />
+    <rect
+       class="cls-1"
+       x="399"
+       y="278"
+       width="141"
+       height="5"
+       rx="2.5"
+       ry="2.5"
+       id="rect31" />
+    <rect
+       class="cls-1"
+       x="399"
+       y="287"
+       width="141"
+       height="5"
+       rx="2.5"
+       ry="2.5"
+       id="rect33" />
+  </g>
+  <g
+     id="book2"
+     transform="translate(-160.25,-254)">
+    <path
+       class="cls-4"
+       d="m 928.25,658.08 c 0,0 -22,2.33 -22,24.53 0,19 15.42,23.35 19.83,24.21 a 10.64,10.64 0 0 0 2,0.19 l 361.35,0.42 -0.31,-7.42 -140.12,-0.4 c 0,0 -9,-0.11 -8,-8.9 v -18.79 c 0,0 -1,-6.92 7,-6.92 7,0 139,1.47 139,1.47 V 657 Z"
+       transform="translate(-746,-403)"
+       id="path53"
+       style="fill:url(#linearGradient119)" />
+    <line
+       class="cls-5"
+       x1="398"
+       y1="267"
+       x2="531"
+       y2="267.75"
+       id="line55" />
+    <line
+       class="cls-5"
+       x1="398"
+       y1="271"
+       x2="531"
+       y2="271.75"
+       id="line57" />
+    <line
+       class="cls-5"
+       x1="398"
+       y1="275"
+       x2="531"
+       y2="275.75"
+       id="line59" />
+    <line
+       class="cls-5"
+       x1="398"
+       y1="279"
+       x2="531"
+       y2="279.75"
+       id="line61" />
+    <line
+       class="cls-6"
+       x1="398"
+       y1="284"
+       x2="531"
+       y2="284.75"
+       id="line63" />
+    <line
+       class="cls-5"
+       x1="398"
+       y1="289"
+       x2="531"
+       y2="289.75"
+       id="line65" />
+    <line
+       class="cls-5"
+       x1="398"
+       y1="293"
+       x2="531"
+       y2="293.75"
+       id="line67" />
+  </g>
+  <metadata
+     id="metadata692">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>Books</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>

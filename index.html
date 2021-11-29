@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"> 
+    <title>Library</title>
+    <link rel='stylesheet' href="./styles.css">
+    <script defer src="./library.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="background">
+            <img src="./img/bg5.svg">
+        </div>
+        <main>
+            <div class="add-book">
+                <img src="./img/queue_black_24dp.svg">
+            </div>
+            <form class="add-form">
+                <div>
+                    <label for="title">Title: </label>
+                    <input type="text" id="title" name="bk-title">
+                </div>
+
+                <div>
+                    <label for="author">Author: </label>
+                    <input type="text" id="author" name="bk-author">
+                </div>
+
+                <div>
+                    <label for="year">Year:</label>
+                    <input type="number" id="year" name="bk-year">
+                </div>
+
+                <div>
+                    <label for="read">Read?</label>
+                    <input type="checkbox" id="read" name="bk-read">
+                </div>
+
+                <button type="submit">Add book</button>
+            </form>
+
+            <div class="table">
+                <img src="./img/Table.svg">
+            </div>
+
+            <div class="books">
+                <div class="book bk1"><img src="./img/book-1.svg"></div>
+                <div class="book bk2"><img src="./img/book-2.svg"></div>
+                <div class="book bk3"><img src="./img/book-3.svg"></div>
+                <div class="book bk4"><img src="./img/book-4.svg"></div>
+                <div class="book bk5"><img src="./img/book-5.svg"></div>
+                <div class="book bk6"><img src="./img/book-6.svg"></div>
+                <div class="book bk7"><img src="./img/book-7.svg"></div>
+            </div>
+
+            <img class="plant" src="./img/Flower.svg">
+            
+            <div class="book-card">
+                <h2>How to Do Nothing: Resisting the Attention Economy</h2>
+                <p>Jenny Odell (2019)</p>
+                <p>Read<img src="./img/task_alt_black_24dp.svg"></p>
+                <div class="book-options">
+                    <img src="./img/edit_black_24dp.svg" edit">
+                    <img src="./img/delete_black_24dp.svg"class="delete">
+                </div>
+            </div>
+
+            <div class="full-warning">
+                <p>Your library is full<p>
+            </div>
+
+        </main>
+
+
+    </div>
+</body>
+</html>
