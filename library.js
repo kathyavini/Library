@@ -1,14 +1,15 @@
 let myLibrary = [];
-let editCaller; // When re-populating add book form
+let editCaller; // Used when re-populating add book form
 let cardShown; // book information card
 
 // Global elements
-addButton = document.querySelector(".add-book");
-submitButton = document.querySelector(".submit");
-editButton = document.querySelector(".edit");
-deleteButton = document.querySelector(".delete");
+let addButton = document.querySelector(".add-book");
+let submitButton = document.querySelector(".submit");
+let editButton = document.querySelector(".edit");
+let deleteButton = document.querySelector(".delete");
+let books = document.querySelectorAll('.book>img');
 
-// Start with a book on the table
+// Start with one book on the table
 let attnEconomy = new Book("Resisting the Attention Economy", "Jenny Odell", 2019, true)
 
 addBookToLibrary(attnEconomy, 3);
@@ -24,49 +25,53 @@ function Book(title, author, year, read) {
 }
 
 Book.prototype.populateBookCard = function() {
-    document.querySelector('.title').textContent = this.title;
-    document.querySelector('.author-year').textContent = `${this.author} (${this.year})`;
-    document.querySelector('.read').textContent = `${this.read? "Read":"Not Yet Read"}`;
+    document.querySelector('.title').textContent = 
+            this.title;
+    document.querySelector('.author-year').textContent = 
+            `${this.author} (${this.year})`;
+    document.querySelector('.read').textContent = 
+            `${this.read? "Read":"Not Yet Read"}`;
+
     if (this.read) {
         document.querySelector('.read-check').style.visibility = "visible";
     } else {
         document.querySelector('.read-check').style.visibility = "hidden";
     }
 
+    // For plant's library
     if (this.index != 9) {
         deleteButton.classList.remove('hidden');
         editButton.classList.remove('hidden');
     }
 
-    // For deletion and editing
+    // To pair delete and edit buttons with the correct book
     document.querySelector('.card-index').textContent = this.index;
+
+    // To track which book the currently displayed card corresponds to
     this.myCard = true;
 };
 
 Book.prototype.editForm = function() {
+
+    // Populate form with book's values
     document.querySelector('#title').value = this.title;
     document.querySelector('#author').value = this.author;
     document.querySelector('#year').value = this.year;
     document.querySelector('#read').checked = this.read;
 
+    // Call up form and save which book did the calling
     editCaller = this.index;
     submitButton = document.querySelector(".submit");
     submitButton.textContent = "Update Book";
 
     hideBookCard();
-    document.querySelector('form').classList.toggle('visible');
+    toggleFormVisibility();
 };
 
 
 Book.prototype.removeFromLibrary = function() {
     delete myLibrary[this.index];
-
-    bookImage = document.querySelector(`.bk${this.index}`);
-    bookImage.style.visibility = 'hidden';
-    
-    if (myLibrary[4] && !myLibrary[3]) {
-        myLibrary[4].image.classList.add("bottom");
-    }
+    updateBookDisplay();
 }
 
 Book.prototype.showMyCard = function() {
@@ -95,7 +100,7 @@ Book.prototype.showMyCard = function() {
 
 function addBookToLibrary(book, index) {
     if (index) {
-        // Page loads with a few books already assigned
+        // Page loads with books already assigned
         myLibrary[index] = book;
         book.index = index;
     } else { // Add to first empty slot
@@ -105,23 +110,41 @@ function addBookToLibrary(book, index) {
         console.log(myLibrary[i]);
             if (myLibrary[i] === undefined) {
                 myLibrary[i] = book;
-                index = i;
-                book.index = index;
+                book.index = i;
                 break;
             }
         }
     }
 
-    console.log(`Book was assigned index ${index}`);
+    updateBookDisplay();
+}
 
-    // Show the book on the library table
-    bookImage = document.querySelector(`.bk${index}`);
-    myLibrary[index].image = bookImage;
-    bookImage.style.visibility = 'visible';
+function updateBookDisplay() {
+    for (let i = 1; i < 8; i++) {
+        bookImage = document.querySelector(`.bk${i}`);
+        if (myLibrary[i]) {
+            myLibrary[i].image = bookImage;
+            bookImage.style.visibility = 'visible';
+        } else {
+            bookImage.style.visibility = 'hidden';
+        }
+    }
 
+    // Fix if book 4 has been left in mid-air
+    if (myLibrary[4] && !myLibrary[3]) {
+        myLibrary[4].image.classList.add("bottom");
+    }
+
+    // Raise book 4 back up if book 3 is present
     if (myLibrary[3] && myLibrary[4]) {
         myLibrary[4].image.classList.remove("bottom");
     }
+}
+
+// Showing and hiding the add/edit form
+function toggleFormVisibility() {
+    addForm = document.querySelector('.add-form');
+    addForm.classList.toggle('visible');
 }
 
 
@@ -130,7 +153,9 @@ function showBookCard() {
     bookCard = document.querySelector('.book-card');
     bookCard.style.visibility = "visible";
     cardShown = true;
+    hideFullWarning();
 }
+
 function hideBookCard() {
     bookCard = document.querySelector('.book-card');
     bookCard.style.visibility = "hidden";
@@ -138,58 +163,76 @@ function hideBookCard() {
     cardShown = false;
 }
 
+function showFullWarning() {
+    document.querySelector('.full-warning').style.visibility = "visible";
+}
 
-addButton.addEventListener('click', () => {
-    
-    // Library full
-    if (myLibrary[1] && myLibrary[2] && myLibrary[3] && 
-            myLibrary[4] && myLibrary[5] && myLibrary[6] && 
-            myLibrary[7]) {
-        document.querySelector('.full-warning').style.visibility = "visible";
-        return
+function hideFullWarning() {
+    document.querySelector('.full-warning').style.visibility = "hidden";
+}
+
+function libraryIsFull() {
+    for (let i = 1; i < 8; i++) {
+        if (!myLibrary[i]) return false;
     }
-    
-    addForm = document.querySelector('.add-form');
-    addForm.classList.toggle('visible');
+    return true
+}
 
-    // Clear any previously input forms
+function clearAddForm() {
     document.querySelector('#title').value = '';
     document.querySelector('#author').value = '';
     document.querySelector('#year').value = '';
     document.querySelector('#read').checked = '';
+}
 
-    hideBookCard();
-});
+function getDataFromForm() {
 
-
-submitButton.addEventListener('click', (ev) => {
-    ev.preventDefault();
-
-    // Get data
     if (document.querySelector('#title').value) {
         formTitle = document.querySelector('#title').value;
-    } else {
-        formTitle = "Title Unknown";
-    }
+    } else formTitle = "Title Unknown";
+
     if (document.querySelector('#author').value) {
         formAuthor = document.querySelector('#author').value;
-    } else {
-        formAuthor = "Author Unknown";
-    }
+    } else formAuthor = "Author Unknown";
 
     if (document.querySelector('#year').value) {
         formYear = document.querySelector('#year').value;
-    } else {
-        formYear = "Year Unknown";
+    } else formYear = "Year Unknown";
+
+    formRead = document.querySelector('#read').checked;
+
+    return [formTitle, formAuthor, formYear, formRead];
+}
+
+
+// Event listeners for global elements 
+addButton.addEventListener('click', () => {    
+    
+    if (libraryIsFull()){
+        hideBookCard();
+        showFullWarning();
+        return
     }
+
+    hideFullWarning();
+    clearAddForm();
+    toggleFormVisibility();
+    hideBookCard();
+
+});
+
+submitButton.addEventListener('click', (ev) => {
+    
+    ev.preventDefault();
+    [formTitle, formAuthor, formYear, formRead] = getDataFromForm();
 
     // Edit if called from a book info card
     if (editCaller) {
         myLibrary[editCaller].title = formTitle
         myLibrary[editCaller].author = formAuthor;
         myLibrary[editCaller].year = formYear;
-        myLibrary[editCaller].read = 
-                    document.querySelector('#read').checked;
+        myLibrary[editCaller].read = formRead;
+
         myLibrary[editCaller].showMyCard();
 
     // Otherwise create a new book
@@ -198,8 +241,7 @@ submitButton.addEventListener('click', (ev) => {
             formTitle,
             formAuthor,
             formYear,
-            document.querySelector('#read').checked
-            );
+            formRead);
         
         addBookToLibrary(inputBook);
     }
@@ -207,8 +249,9 @@ submitButton.addEventListener('click', (ev) => {
     editCaller = null;
     submitButton.textContent = "Add Book";
 
-    document.querySelector('form').classList.toggle('visible');
+    toggleFormVisibility();
 })
+
 
 // Buttons within book info card
 editButton.addEventListener('click', () => {
@@ -220,26 +263,35 @@ deleteButton.addEventListener('click', () => {
     targetIndex = +(document.querySelector('.card-index').textContent);
     myLibrary[targetIndex].removeFromLibrary();
     hideBookCard();
-    document.querySelector('.full-warning').style.visibility = "hidden";
+    hideFullWarning();
 })
 
 // Assign event listeners to the correct book images
-books = document.querySelectorAll('.book>img');
 books.forEach(book => {
     book.addEventListener('click', () => {
         myLibrary[book.getAttribute(("data-index"))].showMyCard();
     })
 });
 
-// // Plant's library - just for fun
-// // But a bit too buggy at the moment to use
-// plant = document.querySelector('.plant');
-// plant.addEventListener('click', () => {
-//     plantBook.showMyCard();
-//     deleteButton.classList.add('hidden');
-//     editButton.classList.add('hidden');
-// });
 
-// const plantBook = new Book("The Hidden Life of Trees", "Peter Wohlleben", 2016, false)
 
-// addBookToLibrary(plantBook, 9);
+// Plant's library - just for fun
+// But a bit too buggy at the moment to use
+plant = document.querySelector('.plant');
+plant.addEventListener('click', () => {
+    plantBook.showMyCard();
+    deleteButton.classList.add('hidden');
+    editButton.classList.add('hidden');
+});
+
+const plantBook = new Book("The Hidden Life of Trees", "Peter Wohlleben", 2016, false)
+
+addBookToLibrary(plantBook, 9);
+
+// Just for testing
+function fillLibrary() {
+    for (let i = 1; i < 8; i++) {
+        test = new Book(`Title ${i}`, `Author ${i}`, 2021, true);
+        addBookToLibrary(test);
+    }
+}
