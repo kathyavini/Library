@@ -73,10 +73,6 @@ img {
     filter: brightness(2); 
 }
 
-.bk3 {
-    visibility: visible;
-}
-
 /* Yikes so much transform */
 .bk1,
 .bk2,
@@ -132,13 +128,13 @@ img {
     grid-area: 4 / 4 / 6 / 6;
 }
 
-.plant:hover {
+/* .plant:hover {
     filter: brightness(1.1); 
 }
 
 .plant:active {
     filter: brightness(1.5);
-}
+} */
 
 .add-book {
     grid-area: 1 / 1;
@@ -157,7 +153,7 @@ img {
 .book-card {
     background-color: #e1e6fb;
     width: 130%;
-    transform: translateX(50px);
+    transform: translateX(25px);
     height: max-content;
     grid-area: 1 / 4 / 3 / 6;
     display: flex;
@@ -170,14 +166,18 @@ img {
     visibility: hidden;
 }
 
-.book-card>p>img {
+.read-line {
+    display: flex;
+    flex: none;
+}
+
+.read-check {
     padding-left: 5px;
     width: 15%;
     vertical-align: middle;
     opacity: .8;
     visibility: hidden;
 }
-
 
 .book-options {
     align-self: flex-end;
@@ -255,4 +255,17 @@ img {
     justify-self: end;
     font-size: 1.8rem;
     visibility: hidden;
+}
+
+.visible {
+    visibility: visible;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+/* Used to associate card with book*/
+.card-index {
+    display: none;
 }

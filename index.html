@@ -32,7 +32,7 @@
                 </div>
 
                 <div>
-                    <label for="year">Year:</label>
+                    <label for="year">Year Published: </label>
                     <input type="number" id="year" name="bk-year">
                 </div>
 
@@ -41,7 +41,7 @@
                     <input type="checkbox" id="read" name="bk-read">
                 </div>
 
-                <button type="submit">Add book</button>
+                <button class="submit" type="submit">Add book</button>
             </form>
 
             <div class="table">
@@ -49,24 +49,28 @@
             </div>
 
             <div class="books">
-                <div class="book bk1"><img src="./img/book-1.svg"></div>
-                <div class="book bk2"><img src="./img/book-2.svg"></div>
-                <div class="book bk3"><img src="./img/book-3.svg"></div>
-                <div class="book bk4"><img src="./img/book-4.svg"></div>
-                <div class="book bk5"><img src="./img/book-5.svg"></div>
-                <div class="book bk6"><img src="./img/book-6.svg"></div>
-                <div class="book bk7"><img src="./img/book-7.svg"></div>
+                <div class="book bk1"><img data-index="1" src="./img/book-1.svg"></div>
+                <div class="book bk2"><img data-index="2" src="./img/book-2.svg"></div>
+                <div class="book bk3"><img data-index="3" src="./img/book-3.svg"></div>
+                <div class="book bk4"><img data-index="4" src="./img/book-4.svg"></div>
+                <div class="book bk5"><img data-index="5" src="./img/book-5.svg"></div>
+                <div class="book bk6"><img data-index="6" src="./img/book-6.svg"></div>
+                <div class="book bk7"><img data-index="7" src="./img/book-7.svg"></div>
             </div>
 
             <img class="plant" src="./img/Flower.svg">
             
             <div class="book-card">
-                <h2>How to Do Nothing: Resisting the Attention Economy</h2>
-                <p>Jenny Odell (2019)</p>
-                <p>Read<img src="./img/task_alt_black_24dp.svg"></p>
+                <h2 class="title">Your JavaScript Has Failed If You're Seeing This</h2>
+                <p class="author-year">Joyce (2021)</p>
+                <div class="read-line">
+                    <p class="read">Read</p>
+                    <img class="read-check" src="./img/task_alt_black_24dp.svg">
+                </div>
                 <div class="book-options">
-                    <img src="./img/edit_black_24dp.svg" edit">
-                    <img src="./img/delete_black_24dp.svg"class="delete">
+                    <img class="edit" src="./img/edit_black_24dp.svg">
+                    <img class="delete" src="./img/delete_black_24dp.svg">
+                    <p class="card-index"></p>
                 </div>
             </div>
 
