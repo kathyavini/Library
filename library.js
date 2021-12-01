@@ -10,9 +10,9 @@ let deleteButton = document.querySelector(".delete");
 let books = document.querySelectorAll('.book>img');
 
 // Start with one book on the table
-let attnEconomy = new Book("Resisting the Attention Economy", "Jenny Odell", 2019, true)
+let pood = new Book("Practical Object-Oriented Design: An Agile Primer Using Ruby, 2nd Edition", "Sandi Metz", 2018, false)
 
-addBookToLibrary(attnEconomy, 3);
+addBookToLibrary(pood, 3);
 
 function Book(title, author, year, read) {
     this.title = title;
@@ -75,19 +75,14 @@ Book.prototype.removeFromLibrary = function() {
 }
 
 Book.prototype.showMyCard = function() {
-    console.log(`Entering showMyCard with the referent of this set to:`);
-    console.log(this);
     if (this.myCard && cardShown) {
         hideBookCard();
-        console.log("Hiding my own card");
     } else if (cardShown) {
-        console.log("Card already shown but updating");
         myLibrary.forEach( book => {
             book.myCard = false;
         });
        this.populateBookCard();
     } else {
-        console.log("Showing a fresh card");
         myLibrary.forEach( book => {
             book.myCard = false;
         });
@@ -106,8 +101,6 @@ function addBookToLibrary(book, index) {
     } else { // Add to first empty slot
         // Starts at 1 b/c that's how book images are counted
         for (let i = 1; i < 8; i++) {
-        console.log(i);
-        console.log(myLibrary[i]);
             if (myLibrary[i] === undefined) {
                 myLibrary[i] = book;
                 book.index = i;
@@ -273,10 +266,7 @@ books.forEach(book => {
     })
 });
 
-
-
 // Plant's library - just for fun
-// But a bit too buggy at the moment to use
 plant = document.querySelector('.plant');
 plant.addEventListener('click', () => {
     plantBook.showMyCard();
@@ -284,7 +274,7 @@ plant.addEventListener('click', () => {
     editButton.classList.add('hidden');
 });
 
-const plantBook = new Book("The Hidden Life of Trees", "Peter Wohlleben", 2016, false)
+const plantBook = new Book("The Hidden Life of Trees", "Peter Wohlleben", 2016, true)
 
 addBookToLibrary(plantBook, 9);
 
