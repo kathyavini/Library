@@ -61,9 +61,6 @@ img {
 /* Would love to know a better way to do this */
 .book {
     width: 100%;
-    /* display: flex;
-    justify-content: flex-end;
-    align-items: flex-end; */
 }
 
 .book img {
@@ -165,6 +162,7 @@ img {
     border-radius: 2px;
     line-height: 2rem;
     visibility: hidden;
+    z-index: 5;
 }
 
 .read-line {
@@ -199,7 +197,7 @@ img {
     grid-area: 1 / 3 / 5 / 6;
     background-color: #343a40;
     height: max-content;
-    z-index: 5;
+    z-index: 9;
     color: white;
     display: flex;
     flex-flow: column wrap;
@@ -284,19 +282,29 @@ img {
 
     main {
         width: 100%;
+        height: 100%;
         grid-template-columns: 1fr repeat(3, 2fr) 1fr;
-        grid-template-rows: repeat(5, 120px);
+        grid-template-rows: repeat(5, 1fr);
     }
 
     /* button to call up form */
     .add-book {
         grid-area: 5 / 3;
-        z-index: 4;
+        z-index: 15;
     }
 
     /* form itself */
     .add-form {
         grid-area: 1 / 2 / 4 / 5;
+        transform: translateY(20px);
+        row-gap: 1rem;
+        line-height: 1rem;
+    }
+
+    .add-form.wide {
+        grid-area: 1 / 1 / 4 / 6;
+        width: calc(100vw - 20px);
+        transform: translate(10px, 10px);
     }
 
     .books {
@@ -310,6 +318,14 @@ img {
 
     .book-card {
         grid-area: 1 / 2 / 3 / 5;
+        transform: translateY(40px);
+    }
+
+    .book-card.wide {
+        grid-area: 1 / 1 / 3 / 6;
+        width: calc(100vw - 20px);
+        transform: translate(10px, 10px);
+        gap: 0px;
     }
 
     .plant {
@@ -351,7 +367,7 @@ img {
     .book-card {
         grid-area: 2 / 5 / 4 / 6;
         transform: translate(50px, 50px);
-        z-index: 3;
+        z-index: 5;
     }
 
     .plant {

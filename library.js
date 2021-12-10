@@ -285,3 +285,19 @@ function fillLibrary() {
         addBookToLibrary(test);
     }
 }
+
+// So that the book card doesn't cover the book on large system font (Firefox Android)
+function testFontAdjustWidth() {
+    let addForm = document.querySelector('.add-form');
+    let bookCard = document.querySelector('.book-card');
+    let computedFont = window.getComputedStyle(bookCard, 
+        null).getPropertyValue('font-size').slice(0,-2);
+    let availHeight = screen.availHeight;
+    
+    if (computedFont > 16 && availHeight < 800) {
+        bookCard.classList.add('wide');
+        addForm.classList.add('wide');
+    }
+}
+
+testFontAdjustWidth();
