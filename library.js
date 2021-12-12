@@ -9,90 +9,92 @@ let editButton = document.querySelector(".edit");
 let deleteButton = document.querySelector(".delete");
 let books = document.querySelectorAll('.book>img');
 
+class Book {
+    constructor(title, author, year, read) {
+        this.title = title;
+        this.author = author;
+        this.year = year;
+        this.read = read;
+        this.myCard = false;
+        this.index = null;
+        this.image = null;
+    }
+
+    populateBookCard() {
+        document.querySelector('.title').textContent = this.title;
+        document.querySelector('.author-year').textContent = 
+                `${this.author} (${this.year})`;
+        document.querySelector('.read').textContent = 
+                `${this.read? "Read":"Not Yet Read"}`;
+
+        if (this.read) {
+            document.querySelector('.read-check').style.visibility = "visible";
+        } else {
+            document.querySelector('.read-check').style.visibility = "hidden";
+        }
+
+        // For plant's library
+        if (this.index != 9) {
+            deleteButton.classList.remove('hidden');
+            editButton.classList.remove('hidden');
+        }
+
+        // To pair delete and edit buttons with the correct book
+        document.querySelector('.card-index').textContent = this.index;
+
+        // To track which book the currently displayed card corresponds to
+        this.myCard = true;
+    }
+
+    editForm() {
+            // Populate form with book's values
+        document.querySelector('#title').value = this.title;
+        document.querySelector('#author').value = this.author;
+        document.querySelector('#year').value = this.year;
+        document.querySelector('#read').checked = this.read;
+
+        // Call up form and save which book did the calling
+        editCaller = this.index;
+        submitButton = document.querySelector(".submit");
+        submitButton.textContent = "Update Book";
+
+        hideBookCard();
+        toggleFormVisibility();
+    }
+
+    removeFromLibrary() {
+        delete myLibrary[this.index];
+        updateBookDisplay();
+    }
+
+    showMyCard() {
+        if (this.myCard && cardShown) {
+            hideBookCard();
+        } else if (cardShown) {
+            myLibrary.forEach( book => {
+                book.myCard = false;
+            });
+           this.populateBookCard();
+        } else {
+            myLibrary.forEach( book => {
+                book.myCard = false;
+            });
+            showBookCard();
+            this.populateBookCard();
+        }
+    }
+}
+
+
+
+// Following refactor to classes, initialization has to go after class declaration :)
 // Start with one book on the table
 let pood = new Book("Practical Object-Oriented Design: An Agile Primer Using Ruby, 2nd Edition", "Sandi Metz", 2018, false)
 
 addBookToLibrary(pood, 3);
 
-function Book(title, author, year, read) {
-    this.title = title;
-    this.author = author;
-    this.year = year;
-    this.read = read;
-    this.myCard = false;
-    this.index = null;
-    this.image = null;
-}
-
-Book.prototype.populateBookCard = function() {
-    document.querySelector('.title').textContent = 
-            this.title;
-    document.querySelector('.author-year').textContent = 
-            `${this.author} (${this.year})`;
-    document.querySelector('.read').textContent = 
-            `${this.read? "Read":"Not Yet Read"}`;
-
-    if (this.read) {
-        document.querySelector('.read-check').style.visibility = "visible";
-    } else {
-        document.querySelector('.read-check').style.visibility = "hidden";
-    }
-
-    // For plant's library
-    if (this.index != 9) {
-        deleteButton.classList.remove('hidden');
-        editButton.classList.remove('hidden');
-    }
-
-    // To pair delete and edit buttons with the correct book
-    document.querySelector('.card-index').textContent = this.index;
-
-    // To track which book the currently displayed card corresponds to
-    this.myCard = true;
-};
-
-Book.prototype.editForm = function() {
-
-    // Populate form with book's values
-    document.querySelector('#title').value = this.title;
-    document.querySelector('#author').value = this.author;
-    document.querySelector('#year').value = this.year;
-    document.querySelector('#read').checked = this.read;
-
-    // Call up form and save which book did the calling
-    editCaller = this.index;
-    submitButton = document.querySelector(".submit");
-    submitButton.textContent = "Update Book";
-
-    hideBookCard();
-    toggleFormVisibility();
-};
-
-
-Book.prototype.removeFromLibrary = function() {
-    delete myLibrary[this.index];
-    updateBookDisplay();
-}
-
-Book.prototype.showMyCard = function() {
-    if (this.myCard && cardShown) {
-        hideBookCard();
-    } else if (cardShown) {
-        myLibrary.forEach( book => {
-            book.myCard = false;
-        });
-       this.populateBookCard();
-    } else {
-        myLibrary.forEach( book => {
-            book.myCard = false;
-        });
-        showBookCard();
-        this.populateBookCard();
-    }
-}
 
 // Global functions (not belonging to book object)
-
 function addBookToLibrary(book, index) {
     if (index) {
         // Page loads with books already assigned
@@ -299,5 +301,4 @@ function testFontAdjustWidth() {
         addForm.classList.add('wide');
     }
 }
-
 testFontAdjustWidth();
